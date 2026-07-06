@@ -1,0 +1,160 @@
+/* Sidebar Container */
+.ls {
+    background-color: #001030; /* Dark blue background from image_916f85.png */
+    color: white;
+    height: 75vh;
+    /* width: 300px; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* padding: 20px; */
+}
+
+.ls-top{
+    padding : 20px;
+}
+/* Header Area (Logo + Menu) */
+.ls-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 25px; */
+}
+
+.ls-nav .logo {
+    max-width: 140px;
+}
+
+.ls-nav .menu img{
+     max-height: 20px;
+     opacity: 0.6;
+     cursor: pointer;
+}
+
+/* Search Bar (Matches image_916f85.png layout) */
+.ls-search {
+    background-color: #11244e;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.ls-search img{
+    width: 16px;
+}
+
+.ls-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    /* margin-left: 10px; */
+    font-size:  11px;
+    /* width: 100%; */
+}
+.ls-search input:placeholder{
+    color: #c8c8c8;
+}
+/* Friend List Item */
+.ls-list {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    overflow-y:scroll;
+    /* gap: 15px; */
+}
+
+.friends {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+    /* transition: background 0.3s; */
+}
+
+.friends:hover {
+    background-color: #11244e; /* Slight highlight on hover */
+}
+
+.friends div{
+    display: flex;
+    flex-direction: column;
+}
+
+.friends img {
+    width: 35px;
+    /* height: 50px;
+     */
+    aspect-ratio: 1/1;
+    border-radius: 50%; /* Makes avatars circular */
+    /* object-fit: cover; */
+}
+
+/* .friends div p {
+    margin: 0;
+    font-weight: 600;
+} */
+
+.friends  span {
+    font-size: 12px;
+    color: #a0a0a0; /* Grey text for message preview */
+}
+
+.friends:hover span{
+    color:  white;
+}
+
+.ls-nav .menu{
+    position: relative;
+    padding: 10px 0px;
+}
+
+.menu .sub-menu{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 130px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    display: none;
+}
+
+.sub-menu hr{
+    border: none;
+    height: 1px;
+    background: #a4a4a4;
+    margin: 8px 0px;
+
+}
+
+.sub-menu p{
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.menu:hover .sub-menu{
+    display: block;
+}
+
+
+.friends.border img{
+    border: 3px solid #07fff3;
+}
+
+.friends.border div span{
+    color: #07fff3;
+}
+
+@media (max-width:900px) {
+    .ls{
+        width: 100%;
+    }
+}

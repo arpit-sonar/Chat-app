@@ -1,0 +1,73 @@
+/* Outer container for background */
+.profile {
+    min-height: 100vh;
+    background: url('src/assets/background.png') no-repeat; /* Replace with your background image */
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Inner white card container */
+.profile-container {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 700px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Form structure */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+}
+
+.profile-form h3 {
+    font-weight: 500;
+}
+
+/* Avatar upload label styling */
+.profile label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: gray;
+    cursor: pointer;
+}
+
+.profile label img {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+/* Inputs and Textarea styling */
+.profile input, .profile textarea {
+    padding: 10px;
+    min-width: 300px;
+    border: 1px solid #c9c9c9;
+    outline-color: #077eff;
+}
+
+/* Save button styling */
+.profile form button {
+    border: none;
+    color: white;
+    background-color: #077eff;
+    padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Large right-side profile picture */
+.profile-pic {
+    max-width: 160px;
+    aspect-ratio: 1/1;
+    margin: 20px auto;
+    border-radius: 50%;
+}

@@ -1,11 +1,13 @@
 // this file is completely responsible for your backend
 
 
-import {getFirestore} from "firestore/firestore"
-import {getAuth} from "firestore/auth"
+import {doc, getDoc, getFirestore, query, setDoc} from "firebase/firestore";
+import {getAuth, sendPasswordResetEmail, signOut} from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword } from "firebase/auth"; // prebuilt Google function
+import { toast } from "react-toastify";
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,33 +23,76 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig); // use firebaseconfig's key to make connection to my project
-
-
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 
 
-import { createUserWithEmailAndPassword , signInWithEmailAndPassword } from "firebase/auth";
 
-export const signup = async (email , password ) =>{
+export const login = async ( email , password ) =>{
     try { // safety box
-        await createUserWithEmailAndPassword(auth,email,password)
+        await signInWithEmailAndPassword(auth,email,password)
 
         console.log("Congratulations! , Signup Successfull");
     }catch (error) { // if error occurs in try block
-
-    console.error("SignUp error: ",error.message); // error is object firebase gives us , it has info about error
+         console.error("SignUp error: ",error.message); // error is object firebase gives us , it has info about error
+        toast.error(error.code.split('/')[1].split('-').join(" "));
     }
 }
 
-export const login = async (email , password ) =>{
+export const signup = async (username,email , password ) =>{
     try { // safety box
-        await createUserWithEmailAndPassword(auth,email,password)
+        const res = await createUserWithEmailAndPassword(auth,email , password);
+        const user = res.user;
+        await setDoc(doc(db,"users",user.uid),{
+            id:user.uid,
+            username: username.toLowerCase(),
+            email,
+            name:"",
+            avatar:'src/assets/avatar_icon.png',
+            bio:"Hey, there i am using Chat app",
+            lastSeen:Date.now()
+        })
 
-        console.log("Congratulations! , login Successfull");
+        await setDoc(doc(db,"chats",user.uid),{
+            chatData:[]
+        })
+
+        console.log("Congratulations! , signup Successfull");
     }catch (error) { // if error occurs in try block
-
-    console.error("login error: ",error.message); // error is object firebase gives us , it has info about error
+        console.error("signup error: ",error.message); // error is object firebase gives us , it has info about error
+        toast.error(error.code.split('/')[1].split('-').join(" "));
     }
 }
 
+
+export const logout = async () => {
+    try{
+        await signOut(auth);
+
+    }catch(error){
+        console.error("signup error: ",error.message); // error is object firebase gives us , it has info about error
+        toast.error(error.code.split('/')[1].split('-').join(" "));
+
+    }
+}
+
+export const resetPass = async (email) => {
+    if(!email){
+        toast.error("Enter your email");
+        return null;
+    }
+    try {
+        const userRef = collection(db,'users');
+        const q = query(userRef,where("email" , "==",email));
+        const querySnap = await getDoc(q);
+        if(!querySnap.empty()){
+            await sendPasswordResetEmail(auth,email);
+            toast.success("Reset Email Sent");
+        }else {
+            toast.error("Email Doesn't Exists");
+        }
+    } catch (error) {
+        toast.error(error.message);
+        console.error(error);
+    }
+}
