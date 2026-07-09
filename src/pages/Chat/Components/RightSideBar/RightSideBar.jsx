@@ -1,20 +1,10 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import './RightSideBar.css'
 import { logout } from '../../../../config/firebase';
 import { Appcontext } from '../../../../context/AppContext';
 const RightSideBar = () => {
 
-   const {chatUser , messages} = useContext(Appcontext);
-
-  //  useEffect(()=>{
-  //   let tempVar =[];
-  //   messages.map((msg) =>{
-  //     if(msg.image){
-  //       te
-  //     }
-  //   })
-  //  },[messages])
-
+   const {chatUser } = useContext(Appcontext);
 
   return chatUser? (
     <div className="rs">

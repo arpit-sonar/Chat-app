@@ -1,23 +1,19 @@
 /* Sidebar Container */
 .ls {
-    background-color: #001030; /* Dark blue background from image_916f85.png */
+    background-color: #001030; 
     color: white;
     height: 75vh;
-    /* width: 300px; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* padding: 20px; */
+
 }
 
 .ls-top{
     padding : 20px;
 }
-/* Header Area (Logo + Menu) */
+/* Header  (Logo + Menu) */
 .ls-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-bottom: 25px; */
 }
 
 .ls-nav .logo {
@@ -30,7 +26,6 @@
      cursor: pointer;
 }
 
-/* Search Bar (Matches image_916f85.png layout) */
 .ls-search {
     background-color: #11244e;
     padding: 10px;
@@ -50,9 +45,7 @@
     border: none;
     outline: none;
     color: white;
-    /* margin-left: 10px; */
     font-size:  11px;
-    /* width: 100%; */
 }
 .ls-search input:placeholder{
     color: #c8c8c8;
@@ -63,7 +56,6 @@
     flex-direction: column;
     height: 70%;
     overflow-y:scroll;
-    /* gap: 15px; */
 }
 
 .friends {
@@ -75,11 +67,10 @@
     cursor: pointer;
     border-radius: 5px;
     font-size: 13px;
-    /* transition: background 0.3s; */
 }
 
 .friends:hover {
-    background-color: #11244e; /* Slight highlight on hover */
+    background-color: #11244e; 
 }
 
 .friends div{
@@ -89,11 +80,8 @@
 
 .friends img {
     width: 35px;
-    /* height: 50px;
-     */
     aspect-ratio: 1/1;
-    border-radius: 50%; /* Makes avatars circular */
-    /* object-fit: cover; */
+    border-radius: 50%; 
 }
 
 /* .friends div p {
@@ -103,7 +91,7 @@
 
 .friends  span {
     font-size: 12px;
-    color: #a0a0a0; /* Grey text for message preview */
+    color: #a0a0a0; 
 }
 
 .friends:hover span{

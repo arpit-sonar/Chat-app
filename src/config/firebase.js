@@ -1,17 +1,9 @@
-// this file is completely responsible for your backend
-
-
 import {doc, getDoc, getFirestore, query, setDoc} from "firebase/firestore";
 import {getAuth, sendPasswordResetEmail, signOut} from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword } from "firebase/auth"; // prebuilt Google function
 import { toast } from "react-toastify";
 
-// Import the functions you need from the SDKs you need
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBhS2M91JKj34Ye3ucAgRaSE9hqKTvu8ss",
     authDomain: "chatapp-c5035.firebaseapp.com",
@@ -21,26 +13,24 @@ const firebaseConfig = {
     appId: "1:434333044330:web:9e113626e89c404c16c413"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig); // use firebaseconfig's key to make connection to my project
-export const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-
+export const db = getFirestore(app);
 
 
 export const login = async ( email , password ) =>{
-    try { // safety box
+    try {
         await signInWithEmailAndPassword(auth,email,password)
 
         console.log("Congratulations! , Signup Successfull");
-    }catch (error) { // if error occurs in try block
+    }catch (error) {
          console.error("SignUp error: ",error.message); // error is object firebase gives us , it has info about error
         toast.error(error.code.split('/')[1].split('-').join(" "));
     }
 }
 
 export const signup = async (username,email , password ) =>{
-    try { // safety box
+    try {
         const res = await createUserWithEmailAndPassword(auth,email , password);
         const user = res.user;
         await setDoc(doc(db,"users",user.uid),{
@@ -58,8 +48,8 @@ export const signup = async (username,email , password ) =>{
         })
 
         console.log("Congratulations! , signup Successfull");
-    }catch (error) { // if error occurs in try block
-        console.error("signup error: ",error.message); // error is object firebase gives us , it has info about error
+    }catch (error) { 
+        console.error("signup error: ",error.message); 
         toast.error(error.code.split('/')[1].split('-').join(" "));
     }
 }
@@ -70,7 +60,7 @@ export const logout = async () => {
         await signOut(auth);
 
     }catch(error){
-        console.error("signup error: ",error.message); // error is object firebase gives us , it has info about error
+        console.error("signup error: ",error.message);
         toast.error(error.code.split('/')[1].split('-').join(" "));
 
     }

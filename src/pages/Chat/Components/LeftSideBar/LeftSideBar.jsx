@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './LeftSideBar.css'
 import { useNavigate } from 'react-router-dom'
 import { arrayUnion, collection, doc, getDocs, updateDoc, setDoc, query, serverTimestamp, getDoc, where } from 'firebase/firestore';
@@ -129,7 +129,7 @@ const LeftSideBar = () => {
         <div className={`ls ${chatVisible? "hidden" :""}`}>
             <div className="ls-top">
                 <div className="ls-nav">
-                    <img src="src/assets/logo.png" className='logo' alt="logo" />
+                    <img src="Bluelogo_leftside.png" className='logo' alt="logo" />
                     <div className="menu">
                         <img src="src/assets/menu_icon.png" alt="menu_icon" />
                         <div className="sub-menu">

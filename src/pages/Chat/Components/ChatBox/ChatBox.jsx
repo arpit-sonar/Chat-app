@@ -100,7 +100,7 @@ const ChatBox = () => {
     </div>
     </div>
   ): <div className={`chat-welcome ${chatVisible? "":"hidden"}`}>
-    <img src="src/assets/logo_icon.png" alt="logoicon" />
+    <img src="Blue_logo-png.png" alt="logoicon" />
     <p>Chat anytime, anywhere</p>
   </div>
 

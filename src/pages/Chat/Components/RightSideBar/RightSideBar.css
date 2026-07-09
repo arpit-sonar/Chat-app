@@ -1,6 +1,6 @@
 .rs {
     color: white;
-    background: #001030; /* Style verified in Screenshot 2026-07-04 180435.png */
+    background: #001030; 
     position: relative;
     height: 75vh;
     overflow-y: scroll;
@@ -36,7 +36,7 @@
 }
 
 .rs hr {
-    border-color: #ffffff50; /* Style verified in Screenshot 2026-07-04 180435.png */
+    border-color: #ffffff50;
     margin: 15px 0;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .rs-media div {
-    max-height: 180px; /* Style verified in Screenshot 2026-07-04 180504.png */
+    max-height: 180px; 
     overflow-y: scroll;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -65,7 +65,7 @@
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: #077eff; /* Style verified in Screenshot 2026-07-04 180530.png */
+    background: #077eff; 
     color: white;
     border: none;
     font-size: 12px;

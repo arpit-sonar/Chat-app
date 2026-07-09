@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import App from "../App";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
@@ -49,7 +48,6 @@ const AppContextProvider = (props) =>{
             const chatRef = doc(db,'chats',userData.id);
             const unSub = onSnapshot(chatRef,async(res) =>{
                 const ChatItems = res.data().chatData;
-                // console.log(res.data());
                 const tempData = [];
                 for(const item of ChatItems){
                     const userRef = doc(db,'users',item.rId);

@@ -2,7 +2,7 @@ import {Routes , Route} from 'react-router-dom'
 import Login from './pages/Login/Login'
 import Chat from './pages/Chat/Chat'
 import ProfileUpdate from './pages/ProfileUpdate/ProfileUpdate'
-import { useState,useEffect, useContext } from 'react';
+import {useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './config/firebase';

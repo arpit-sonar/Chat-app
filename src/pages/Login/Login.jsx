@@ -29,13 +29,11 @@ const Login = () => {
 
     return (
         <div className='login'>
-            {/* The background logo/title as seen in the video */}
-            <img src="src/assets/logo_big.png" alt="Logo" className="logo" />
+            <img src="SyncChat_logo.png" alt="Logo" className="logo" />
             
             <form onSubmit={handleSubmit} className='login-form'>
                 <h2>{curState ? "Sign up" : "Login"}</h2>
                 
-                {/* Username input only shows in Sign Up mode */}
                 {curState ? 
                     <input 
                         className="form-input"
@@ -71,11 +69,6 @@ const Login = () => {
                 <button type="submit" className="submit-btn">
                     {curState ? "Create account" : "Login now"}
                 </button>
-
-                <div className='login-term'>
-                    <input type='checkbox' />
-                    <p>Agree to the terms of use & privacy policy.</p>
-                </div>
 
                 <div className='login-forgot'>
                     {curState ? 
