@@ -3,6 +3,13 @@ import './ChatBox.css'
 import { Appcontext } from '../../../../context/AppContext'
 import { arrayUnion, doc, getDoc, onSnapshot, updateDoc } from 'firebase/firestore';
 import { db } from '../../../../config/firebase';
+import logo from '../../../../assets/Blue_logo-png.png' ;
+import help from '../../../../assets/help_icon.png' ;
+import send from '../../../../assets/send_button.png' ;
+import dot from '../../../../assets/green_dot.png' ;
+import arrow from '../../../../assets/arrow_icon.png' ;
+import avatar from '../../../../assets/avatar_icon.png' ;
+
 const ChatBox = () => {
 
     const {userData,chatUser,messagesId,messages,setMessages,chatVisible, setChatVisible} = useContext(Appcontext);
@@ -73,17 +80,17 @@ const ChatBox = () => {
   return chatUser? (
     <div className={`chat-box ${chatVisible? "":"hidden"}`}>
         <div className="chat-user">
-            <img src={chatUser.userData.avatar} alt="profileimg" />
-            <p>{chatUser.userData.name} {Date.now() - chatUser.userData.lastSeen <= 70000 ? <img src="src/assets/green_dot.png" className='dot' alt="dot" />: null}</p>
-            <img src="src/assets/help_icon.png" className= 'help' alt="help" />
-            <img onClick={()=>setChatVisible(false)} src="src/assets/arrow_icon.png" className='arrow' alt="" />
+            <img src={avatar} alt="profileimg" />
+            <p>{chatUser.userData.name} {Date.now() - chatUser.userData.lastSeen <= 70000 ? <img src={dot} className='dot' alt="dot" />: null}</p>
+            <img src={help} className= 'help' alt="help" />
+            <img onClick={()=>setChatVisible(false)} src={arrow} className='arrow' alt="" />
         </div>
         <div className="chat-msg">
             {messages.map((msg,index) =>(
             <div key = {index} className={msg.sId === userData.id? "s-msg" :"r-msg"}>
                 <p className="msg">{msg.text}</p>
                 <div>
-                    <img src={msg.sId === userData.id? userData.avatar : chatUser.userData.avatar} alt="img" />
+                    <img src={msg.sId === userData.id? {avatar} : {avatar}} alt="img" />
                     <p>{convertTimeStamp(msg.createdAt)}</p>
                 </div>
             </div> 
@@ -93,14 +100,11 @@ const ChatBox = () => {
     <div className="chat-input">
         <input onChange= {(e)=>setInput(e.target.value)} value ={input} type="text" placeholder= 'Send a message' name="" id="" />
         <input type="text" id = 'image' accept = 'image/png , image/jpeg' hidden />
-        <label htmlFor="image">
-            <img src="src/assets/gallery_icon.png" alt="gallery" />
-        </label>
-        <img onClick={sendMessage} src="src/assets/send_button.png" alt="send" />
+        <img onClick={sendMessage} src={send} alt="send" />
     </div>
     </div>
   ): <div className={`chat-welcome ${chatVisible? "":"hidden"}`}>
-    <img src="Blue_logo-png.png" alt="logoicon" />
+    <img src={logo} alt="logoicon" />
     <p>Chat anytime, anywhere</p>
   </div>
 

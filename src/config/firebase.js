@@ -1,8 +1,9 @@
-import {doc, getDoc, getFirestore, query, setDoc} from "firebase/firestore";
+import {collection, doc, getDoc, getFirestore, query, setDoc, where} from "firebase/firestore";
 import {getAuth, sendPasswordResetEmail, signOut} from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword } from "firebase/auth"; // prebuilt Google function
 import { toast } from "react-toastify";
+import avatari from '../assets/avatar_icon.png'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBhS2M91JKj34Ye3ucAgRaSE9hqKTvu8ss",
@@ -24,21 +25,21 @@ export const login = async ( email , password ) =>{
 
         console.log("Congratulations! , Signup Successfull");
     }catch (error) {
-         console.error("SignUp error: ",error.message); // error is object firebase gives us , it has info about error
+         console.error("SignUp error: ",error.message); 
         toast.error(error.code.split('/')[1].split('-').join(" "));
     }
 }
 
 export const signup = async (username,email , password ) =>{
     try {
-        const res = await createUserWithEmailAndPassword(auth,email , password);
+        const res = await createUserWithEmailAndPassword(auth ,email , password);
         const user = res.user;
         await setDoc(doc(db,"users",user.uid),{
             id:user.uid,
             username: username.toLowerCase(),
             email,
             name:"",
-            avatar:'src/assets/avatar_icon.png',
+            avatar:avatari,
             bio:"Hey, there i am using Chat app",
             lastSeen:Date.now()
         })

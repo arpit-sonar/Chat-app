@@ -1,7 +1,10 @@
-import { useContext } from 'react'
+import { useContext } from 'react';
 import './RightSideBar.css'
 import { logout } from '../../../../config/firebase';
 import { Appcontext } from '../../../../context/AppContext';
+import dot from '../../../../assets/green_dot.png';
+import avatar from '../../../../assets/avatar_icon.png';
+
 const RightSideBar = () => {
 
    const {chatUser } = useContext(Appcontext);
@@ -9,8 +12,8 @@ const RightSideBar = () => {
   return chatUser? (
     <div className="rs">
         <div className="rs-profile">
-            <img src= {chatUser.userData.avatar} alt="profileimg" />
-            <h3>{chatUser.userData.name} {Date.now() - chatUser.userData.lastSeen <= 70000 ? <img src="src/assets/green_dot.png" className='dot' alt="dot" />: null}</h3>
+            <img src= {avatar} alt="profileimg" />
+            <h3>{chatUser.userData.name} {Date.now() - chatUser.userData.lastSeen <= 70000 ? <img src={dot} className='dot' alt="dot" />: null}</h3>
             <p>{chatUser.userData.bio}</p>
         </div>
         <hr/>

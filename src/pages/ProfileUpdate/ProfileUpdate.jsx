@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { Appcontext } from '../../context/AppContext';
 import { auth, db } from '../../config/firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import logo from '../../assets/Blue_logo-png.png' ;
+import avatar from '../../assets/avatar_icon.png';
 import { toast } from 'react-toastify';
 
 const ProfileUpdate = () => {
@@ -72,7 +74,7 @@ const ProfileUpdate = () => {
                     <h3>Profile Details</h3>
                     <label htmlFor="avatar">
                         <input onChange= {(e) =>setImage(e.target.files[0])} type="file" id="avatar" accept=".png, .jpg, .jpeg" hidden />
-                        <img src={'src/assets/avatar_icon.png'} alt="Avatar Upload" />
+                        <img src={avatar} alt="Avatar Upload" />
                         Upload Profile Image
                     </label>
                     <input  onChange={(e)=>setName(e.target.value)}  value ={name} type="text" placeholder="Your name" required />
@@ -81,7 +83,7 @@ const ProfileUpdate = () => {
                         {loading? "Saving..." : "Save"}
                     </button>
                 </form>
-                <img className="profile-pic" src="Blue_logo-png.png" alt="Profile" />
+                <img className="profile-pic" src={logo} alt="Profile" />
             </div>
         </div>
     );

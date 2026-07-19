@@ -47,7 +47,7 @@
     color: white;
     font-size:  11px;
 }
-.ls-search input:placeholder{
+.ls-search input::placeholder{
     color: #c8c8c8;
 }
 /* Friend List Item */

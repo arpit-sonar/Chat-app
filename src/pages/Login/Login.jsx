@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { login, signup ,resetPass} from '../../config/firebase'
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
+import logo from '../../assets/SyncChat_logo.png' ;
 import { toast } from 'react-toastify';
 
 const Login = () => {
@@ -29,7 +30,7 @@ const Login = () => {
 
     return (
         <div className='login'>
-            <img src="SyncChat_logo.png" alt="Logo" className="logo" />
+            <img src={logo} alt="Logo" className="logo" />
             
             <form onSubmit={handleSubmit} className='login-form'>
                 <h2>{curState ? "Sign up" : "Login"}</h2>

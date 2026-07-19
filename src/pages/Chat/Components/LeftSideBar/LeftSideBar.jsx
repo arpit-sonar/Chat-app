@@ -5,6 +5,11 @@ import { useNavigate } from 'react-router-dom'
 import { arrayUnion, collection, doc, getDocs, updateDoc, setDoc, query, serverTimestamp, getDoc, where } from 'firebase/firestore';
 import { Appcontext } from '../../../../context/AppContext';
 import { toast } from 'react-toastify';
+import logo from '../../../../assets/Bluelogo_leftside.png' ;
+import menu from '../../../../assets/menu_icon.png' ;
+import search from '../../../../assets/search_icon.png' ;
+import avatar from '../../../../assets/avatar_icon.png' ;
+
 import { db, logout } from '../../../../config/firebase';
 
 const LeftSideBar = () => {
@@ -129,9 +134,9 @@ const LeftSideBar = () => {
         <div className={`ls ${chatVisible? "hidden" :""}`}>
             <div className="ls-top">
                 <div className="ls-nav">
-                    <img src="Bluelogo_leftside.png" className='logo' alt="logo" />
+                    <img src={logo} className='logo' alt="logo" />
                     <div className="menu">
-                        <img src="src/assets/menu_icon.png" alt="menu_icon" />
+                        <img src={menu} alt="menu_icon" />
                         <div className="sub-menu">
                             <p onClick={() => navigate('/profile')}>Edit Profile</p>
                             <hr />
@@ -141,7 +146,7 @@ const LeftSideBar = () => {
                 </div>
 
                 <div className="ls-search">
-                    <img src="src/assets/search_icon.png" alt="searchicon" />
+                    <img src={search} alt="searchicon" />
                     <input type="text" onChange={inputHandle} placeholder="Search here.." />
                 </div>
             </div>
@@ -149,13 +154,13 @@ const LeftSideBar = () => {
             <div className="ls-list">
                 {showSearch && user ?
                     <div onClick={addChat} className='friends add-user'>
-                        <img src={user.avatar} alt="" />
+                        <img src={avatar} alt="image" />
                         <p>{user.name}</p>
                     </div>
                     :
                     chatData.map((item, index) => (
                         <div key={index} onClick={() => setChat(item)} className={`friends ${item.messageSeen || item.messagesId === messagesId ? "" : "border"}`}>
-                            <img src={item.userData.avatar} alt="" />
+                            <img src={avatar} alt="chatimage" />
                             <div>
                                 <p>{item.userData.name}</p>
                                 <span>{item.lastMessage}</span>
