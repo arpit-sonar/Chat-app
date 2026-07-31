@@ -6,12 +6,12 @@ import { toast } from "react-toastify";
 import avatari from '../assets/avatar_icon.png'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBhS2M91JKj34Ye3ucAgRaSE9hqKTvu8ss",
-    authDomain: "chatapp-c5035.firebaseapp.com",
-    projectId: "chatapp-c5035",
-    storageBucket: "chatapp-c5035.firebasestorage.app",
-    messagingSenderId: "434333044330",
-    appId: "1:434333044330:web:9e113626e89c404c16c413"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);

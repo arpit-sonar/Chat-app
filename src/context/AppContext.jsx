@@ -17,7 +17,7 @@ const AppContextProvider = (props) =>{
 
     const loadUserData = async(uid) =>{
         try {
-            const userRef =doc(db,"users",uid);
+            const userRef =  doc(db,"users",uid);
             const userSnap = await getDoc(userRef);
             const userData = userSnap.data();
             setUserData(userData);
@@ -27,34 +27,32 @@ const AppContextProvider = (props) =>{
 
             await updateDoc(userRef,{
                 lastSeen:Date.now()
-
             })
             setInterval(async() =>{
                 if(auth.chatUser){
                     await updateDoc(userRef,{
                         lastSeen:Date.now()
-
                     })
                 }
             },60000); // after every 1 min interval
+
         } catch (error) {
             console.error(error);
             toast.error(error.message);
         }
     }
 
-    useEffect(()=>{
+    useEffect(()=>{ 
         if(userData){
             const chatRef = doc(db,'chats',userData.id);
             const unSub = onSnapshot(chatRef,async(res) =>{
                 const ChatItems = res.data().chatData;
-                const tempData = [];
+                const tempData =[]; 
                 for(const item of ChatItems){
                     const userRef = doc(db,'users',item.rId);
                     const userSnap = await getDoc(userRef);
                     const userData = userSnap.data();
                     tempData.push({...item,userData});
-
                 }
                 setChatData(tempData.sort((a,b) =>b.updatedAt - a.updatedAt))
             });
