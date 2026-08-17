@@ -82,6 +82,8 @@
     gap: 20px;
     height: calc(100% - 20%);
     overflow-y: scroll;
+    min-height: 0;
+    
 }
 
 
