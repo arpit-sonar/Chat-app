@@ -2,7 +2,8 @@
 .ls {
     background-color: #001030; 
     color: white;
-    height: 75vh;
+    height: 100%;
+
 
 }
 
@@ -141,8 +142,8 @@
     color: #07fff3;
 }
 
-@media (max-width:900px) {
+/* @media (max-width:900px) {
     .ls{
         width: 100%;
     }
-}
+} */
