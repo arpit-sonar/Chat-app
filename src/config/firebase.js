@@ -4,14 +4,15 @@ import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword } from "firebase/auth"; // prebuilt Google function
 import { toast } from "react-toastify";
 import avatari from '../assets/avatar_icon.png'
+console.log("MY API KEY IS:", import.meta.env.VITE_FIREBASE_API_KEY);
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID
+apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
@@ -21,12 +22,13 @@ export const db = getFirestore(app);
 
 export const login = async ( email , password ) =>{
     try {
-        await signInWithEmailAndPassword(auth,email,password)
+        await signInWithEmailAndPassword(auth,email,password);
 
         console.log("Congratulations! , Signup Successfull");
     }catch (error) {
          console.error("SignUp error: ",error.message); 
         toast.error(error.code.split('/')[1].split('-').join(" "));
+        throw error;
     }
 }
 
@@ -52,6 +54,7 @@ export const signup = async (username,email , password ) =>{
     }catch (error) { 
         console.error("signup error: ",error.message); 
         toast.error(error.code.split('/')[1].split('-').join(" "));
+        throw error;
     }
 }
 
@@ -63,7 +66,7 @@ export const logout = async () => {
     }catch(error){
         console.error("signup error: ",error.message);
         toast.error(error.code.split('/')[1].split('-').join(" "));
-
+        throw error;
     }
 }
 
@@ -85,5 +88,6 @@ export const resetPass = async (email) => {
     } catch (error) {
         toast.error(error.message);
         console.error(error);
+        throw error;
     }
 }
