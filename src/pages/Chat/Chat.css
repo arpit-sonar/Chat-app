@@ -20,14 +20,14 @@
 }
 
 
-/* @media (max-width: 900px){
+@media (max-width: 900px){
 .chat-container{
     display: flex;
 }
 .loading{
     font-size: 30px;
 }
-} */
+}
 
 @media (max-width: 768px) {
   .chat-container {
@@ -54,4 +54,5 @@
   .chat-msg {
     flex-grow: 1; 
     overflow-y: auto; 
+  }
 }

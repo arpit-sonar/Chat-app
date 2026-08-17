@@ -10,7 +10,7 @@
 .ls-top{
     padding : 20px;
 }
-/* Header  (Logo + Menu) */
+
 .ls-nav {
     display: flex;
     justify-content: space-between;
@@ -142,8 +142,8 @@
     color: #07fff3;
 }
 
-/* @media (max-width:900px) {
+@media (max-width:900px) {
     .ls{
         width: 100%;
     }
-} */
+}
