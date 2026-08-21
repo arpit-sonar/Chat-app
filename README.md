@@ -1,6 +1,6 @@
 # SyncChat – Real-Time Messaging Application
 
-**[View Live Demo]**(https://chat-app-lac-nine-90.vercel.app/)
+[**View Live Demo**](https://chat-app-lac-nine-90.vercel.app/)
 
 ## 🏗️ Architecture & Workflow
 
