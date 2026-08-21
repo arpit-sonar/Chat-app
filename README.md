@@ -1,16 +1,45 @@
-# React + Vite
+# SyncChat – Real-Time Messaging Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**[View Live Demo]**(https://chat-app-lac-nine-90.vercel.app/)
 
-Currently, two official plugins are available:
+## 🏗️ Architecture & Workflow
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![SyncChat - Architecture Diagram](./SyncChat-Architecture_Diagram.png)
 
-## React Compiler
+### **System Workflow**
+1. **Client Initialization:** The React app loads via Vite, initiating the Context API to establish the global state environment.
+2. **Authentication Flow:**
+   * Users sign up/log in via Firebase Auth.
+   * Upon successful authentication, a listener triggers user data retrieval from Firestore and populates the global `AppContext`.
+3. **Real-Time Synchronization:**
+   * Active chats utilize Firestore `onSnapshot` listeners.
+   * When a user sends a message, a write request is pushed to Firestore.
+   * The listener instantly detects the database mutation and pushes the updated payload back to the client, triggering a precise DOM re-render in the UI.
+4. **Session Termination:** Upon logout, explicit state-clearing functions purge all chat and user data from the global memory, eliminating state persistence and securing data privacy before routing back to the login gateway.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💻 Technical Stack
 
-## Expanding the ESLint configuration
+**Frontend**
+* **React.js** – Core UI library for building the SPA.
+* **Vite** – Next-generation frontend tooling for rapid compilation and optimized builds.
+* **Context API** – Built-in React state management to handle user sessions and chat data globally.
+* **CSS3** – Advanced Flexbox and Grid layouts, utilizing custom media queries for responsive design.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Backend & Database (BaaS)**
+* **Firebase Authentication** – Secure, encrypted user sign-up and login handling.
+* **Firebase Firestore** – NoSQL cloud database utilizing WebSocket connections for real-time data streaming.
+
+**Deployment & CI/CD**
+* **Vercel** – Production hosting with continuous deployment linked directly to the `main` GitHub branch.
+
+## ✨ Core Features
+* **Bi-directional Real-Time Messaging:** Instantaneous message delivery and dynamic chat history rendering.
+* **Responsive Fluid UI:** Mobile-first architecture that seamlessly transitions between 1, 2, and 3-column layouts based on spatial constraints.
+* **Secure State Management:** Strict null-checking and global state purging to prevent data leaks between user sessions.
+* **Scroll-Bound Chat Interface:** Flexbox-constrained message containers ensuring intuitive internal scrolling without layout overflow.
+
+
+## 🔷 Contact
+* **Arpit Sonar**
+* **Institution:** IIT (BHU) Varanasi
+* **Email:** arpitsonar12@gmail.com
